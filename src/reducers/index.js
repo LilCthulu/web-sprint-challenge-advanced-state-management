@@ -1,8 +1,46 @@
-
 export const initialState = {
+    smurfs: [],
+    isloading: false,
+    isAnError: ''
 }
 
-const reducer = ()=>{
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case (START_FETCH_SMURF):
+            return ({
+                ...state,
+                isloading: true
+            })
+
+        case (GOOD_FETCH_SMURF):
+            return ({
+                ...state,
+                isLoading: false,
+            })
+
+        case (BAD_FETCH_SMURF):
+            return ({
+                ...state,
+                isLoading: true,
+            })
+
+        case (ADD_SMURF):
+            return ({
+                ...state,
+                isLoading: false
+
+            })
+
+        case (GOOD_FETCH_SMURF):
+            return ({
+                ...state,
+                isLoading: true,
+                isAnError: 'An error has occured! ...yelling at the people in your computer to fix it, and retrying.'
+            })
+
+        default:
+            return state;
+    }
 }
 
 export default reducer;
