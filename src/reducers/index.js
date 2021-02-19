@@ -1,5 +1,11 @@
 export const initialState = {
-    smurfs: [],
+    smurfs: [{
+        name: '',
+        nickname: '',
+        position: '',
+        summary: '',
+        id: '',
+    }],
     isloading: false,
     isAnError: ''
 }
@@ -27,7 +33,15 @@ const reducer = (state = initialState, action) => {
         case (ADD_SMURF):
             return ({
                 ...state,
-                isLoading: false
+                isLoading: false,
+                smurfs: {
+                    ...state.smurfs,
+                    name: action.payload.name,
+                    nickname: action.payload.nickname,
+                    position: action.payload.position,
+                    summary: action.payload.summary,
+                    id: action.payload.id
+                }
 
             })
 
